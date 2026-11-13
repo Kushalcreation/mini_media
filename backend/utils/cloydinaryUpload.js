@@ -34,7 +34,6 @@ export function uploadBufferToCloudinary(fileBuffer, folder) {
             message: error.message,
             http_code: error.http_code,
             name: error.name,
-            error: error.error,
           });
 
           return reject(error);
@@ -46,4 +45,16 @@ export function uploadBufferToCloudinary(fileBuffer, folder) {
 
     stream.end(fileBuffer);
   });
+}
+
+export async function deleteCloudinaryImage(publicId) {
+  if (!publicId) return;
+
+  try {
+    await cloudinary.uploader.destroy(publicId, {
+      resource_type: "image",
+    });
+  } catch (error) {
+    console.error("Cloudinary cleanup failed:", error.message);
+  }
 }
