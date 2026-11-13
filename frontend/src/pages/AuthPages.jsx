@@ -7,7 +7,7 @@ function AuthLayout({ title, subtitle, children }) {
     <div className="grid min-h-screen place-items-center px-4 py-10">
       <div className="w-full max-w-md">
         <div className="mb-7 text-center">
-          <div className="mb-3 text-3xl font-black text-brand">emilo.</div>
+          <div className="mb-3 text-3xl font-black text-brand">Mini Media</div>
           <h1 className="text-2xl font-bold">{title}</h1>
           <p className="mt-2 text-sm muted">{subtitle}</p>
         </div>
