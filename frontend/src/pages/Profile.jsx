@@ -15,7 +15,8 @@ export default function Profile() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const load = () => api.get("/posts/mine").then((r) => setPosts(r.data.posts));
+  const load = () =>
+    api.get("/api/posts/mine").then((r) => setPosts(r.data.posts));
   useEffect(() => {
     if (user) setForm({ name: user.name || "", bio: user.bio || "" });
     load();
@@ -52,7 +53,7 @@ export default function Profile() {
     if (profileFile) body.append("profilePicture", profileFile);
     try {
       setBusy(true);
-      const { data } = await api.patch("/users/me", body);
+      const { data } = await api.patch("/api/users/me", body);
       setUser(data.user);
       setProfileFile(null);
       setMessage("Profile updated successfully");

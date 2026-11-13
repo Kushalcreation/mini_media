@@ -1,13 +1,23 @@
-import { Router } from 'express';
-import { protect } from '../middleware/auth.js';
-import { validate } from '../middleware/validate.js';
-import upload from '../middleware/upload.js';
-import { profileSchema } from '../validations/schemas.js';
-import { updateProfile, getProfile, listUsers, toggleFollow } from '../controllers/userController.js';
+import { Router } from "express";
+import { protect } from "../middleware/auth.js";
+import { validate } from "../middleware/validate.js";
+import upload from "../middleware/upload.js";
+import { profileSchema } from "../validations/schemas.js";
+import {
+  updateProfile,
+  getProfile,
+  listUsers,
+  toggleFollow,
+} from "../controllers/userController.js";
 const router = Router();
 router.use(protect);
-router.get('/', listUsers);
-router.patch('/me', upload.single('profilePicture'), validate(profileSchema), updateProfile);
-router.get('/:id', getProfile);
-router.post('/:id/follow', toggleFollow);
+router.get("/", listUsers);
+router.patch(
+  "/me",
+  upload.single("profilePicture"),
+  validate(profileSchema),
+  updateProfile,
+);
+router.get("/:id", getProfile);
+router.post("/:id/follow", toggleFollow);
 export default router;

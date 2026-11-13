@@ -39,7 +39,7 @@ export default function CreatePost() {
     if (imageFile) body.append("image", imageFile);
     try {
       setBusy(true);
-      await api.post("/posts", body);
+      await api.post("/api/posts", body);
       nav("/");
     } catch (e) {
       setError(e.response?.data?.message || "Could not create post");

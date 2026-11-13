@@ -8,7 +8,7 @@ export default function People() {
   const { user } = useAuth();
   const load = () =>
     api
-      .get("/users")
+      .get("/api/users")
       .then((r) => setPeople(r.data.users))
       .catch((e) =>
         setError(e.response?.data?.message || "Could not load users"),
@@ -18,7 +18,7 @@ export default function People() {
   }, []);
   const toggle = async (person) => {
     try {
-      await api.post(`/users/${person.id || person._id}/follow`);
+      await api.post(`/api/users/${person.id || person._id}/follow`);
       load();
     } catch (e) {
       setError(e.response?.data?.message || "Could not update follow status");

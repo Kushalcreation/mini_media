@@ -10,7 +10,7 @@ export default function Feed() {
   const { user } = useAuth();
   const load = () =>
     api
-      .get("/posts")
+      .get("/api/posts")
       .then((r) => setPosts(r.data.posts))
       .catch((e) => console.error(e))
       .finally(() => setLoading(false));

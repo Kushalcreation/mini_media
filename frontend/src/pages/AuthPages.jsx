@@ -34,7 +34,7 @@ export function Register() {
       return setError("Password must be at least 6 characters");
     try {
       setBusy(true);
-      const { data } = await api.post("/auth/register", form);
+      const { data } = await api.post("/api/auth/register", form);
       acceptAuth(data);
       nav("/");
     } catch (e) {
@@ -111,7 +111,7 @@ export function Login() {
     setError("");
     try {
       setBusy(true);
-      const { data } = await api.post("/auth/login", form);
+      const { data } = await api.post("/api/auth/login", form);
       acceptAuth(data);
       nav("/");
     } catch (e) {

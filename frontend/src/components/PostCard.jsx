@@ -10,7 +10,7 @@ export default function PostCard({ post, onChange }) {
   const own = (post.author?._id || post.author) === (user?.id || user?._id);
   const like = async () => {
     try {
-      await api.post(`/posts/${post._id}/like`);
+      await api.post(`/api/posts/${post._id}/like`);
       onChange?.();
     } catch (e) {
       alert(e.response?.data?.message || "Unable to like post");
@@ -19,7 +19,7 @@ export default function PostCard({ post, onChange }) {
   const remove = async () => {
     if (!confirm("Delete this post?")) return;
     try {
-      await api.delete(`/posts/${post._id}`);
+      await api.delete(`/api/posts/${post._id}`);
       onChange?.();
     } catch (e) {
       alert(e.response?.data?.message || "Unable to delete post");
