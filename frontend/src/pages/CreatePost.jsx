@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { ImagePlus, X } from "lucide-react";
 import api from "../services/api";
 import ImageCropper from "../components/ImageCropper";
-import PostImageCropper from "../components/PostImageCropper";
 
 export default function CreatePost() {
   const [text, setText] = useState("");
@@ -116,8 +115,9 @@ export default function CreatePost() {
         </div>
       </form>
       {cropFile && (
-        <PostImageCropper
+        <ImageCropper
           file={cropFile}
+          aspect={19 / 9}
           onCancel={() => setCropFile(null)}
           onComplete={(file) => {
             setImageFile(file);

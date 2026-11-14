@@ -61,7 +61,7 @@ export default function PostCard({ post, onChange }) {
         <img
           src={post.image}
           alt="Post"
-          className="max-h-[520px] w-full rounded-xl bg-slate-50 object-cover"
+          className="mt-3 w-full overflow-hidden rounded-xl bg-slate-50"
           onError={(e) => (e.currentTarget.style.display = "none")}
         />
       )}
